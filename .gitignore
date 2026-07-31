@@ -1,4 +1,11 @@
-venv/
 __pycache__/
 *.pyc
+.env
+venv/
+.venv/
+.DS_Store
+mysql_data/__pycache__
+*.pyc
+.git
+.gitignore
 .env

@@ -1,37 +1,138 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Employee Management</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<h1>Employee Management System</h1>
+    <title>Employee Attendance Manager</title>
 
-<a href="/add">Add Employee</a>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
 
-<table border="1">
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Department</th>
-        <th>Action</th>
-    </tr>
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
 
-    {% for emp in employees %}
-    <tr>
-        <td>{{ emp[0] }}</td>
-        <td>{{ emp[1] }}</td>
-        <td>{{ emp[2] }}</td>
-        <td>{{ emp[3] }}</td>
-        <td>
-            <a href="/delete/{{ emp[0] }}">Delete</a>
-        </td>
-    </tr>
-    {% endfor %}
+  <body>
+    <div class="dashboard">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="logo">
+          <i class="fa-solid fa-cloud"></i>
+          Attendance Manager
+        </div>
 
-</table>
+        <ul>
+          <li class="active">
+            <a href="/">
+              <i class="fa-solid fa-users"></i>
+              Employees
+            </a>
+          </li>
 
-</body>
+          <li>
+            <a href="/">
+              <i class="fa-solid fa-chart-line"></i>
+              Dashboard
+            </a>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="top-section">
+          <div>
+            <h1>Employee Attendance Manager</h1>
+            <p>Manage your organization's workforce efficiently</p>
+          </div>
+
+          <a href="/add" class="add-btn">
+            <i class="fa-solid fa-user-plus"></i>
+            Register Employee
+          </a>
+        </div>
+
+        <!-- Stats Cards -->
+
+        <div class="cards">
+          <div class="card">
+            <i class="fa-solid fa-users"></i>
+            <div>
+              <h2>{{ employees|length }}</h2>
+              <p>Total Staff</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <i class="fa-solid fa-building"></i>
+            <div>
+              <h2>Active</h2>
+              <p>Departments</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <i class="fa-solid fa-server"></i>
+            <div>
+              <h2>Cloud</h2>
+              <p>Operations</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Employee Table -->
+
+        <div class="table-container">
+          <h2>
+            <i class="fa-solid fa-list"></i>
+            Employee Records
+          </h2>
+
+          <table>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Department</th>
+              <th>Action</th>
+            </tr>
+
+            {% for emp in employees %}
+
+            <tr>
+              <td>{{ emp[0] }}</td>
+
+              <td>
+                <div class="employee-name">
+                  <i class="fa-solid fa-user"></i>
+                  {{ emp[1] }}
+                </div>
+              </td>
+
+              <td>{{ emp[2] }}</td>
+
+              <td>
+                <span class="department"> {{ emp[3] }} </span>
+              </td>
+
+              <td>
+                <a href="/delete/{{ emp[0] }}" class="delete-btn">
+                  <i class="fa-solid fa-trash"></i>
+                  Delete
+                </a>
+              </td>
+            </tr>
+
+            {% endfor %}
+          </table>
+        </div>
+      </main>
+    </div>
+  </body>
 </html>

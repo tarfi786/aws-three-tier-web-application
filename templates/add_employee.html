@@ -1,27 +1,114 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Add Employee</title>
-</head>
-<body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<h2>Add Employee</h2>
+    <title>Register Employee | Attendance Manager</title>
 
-<form method="POST">
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
 
-    <input type="text" name="name" placeholder="Name" required><br><br>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
 
-    <input type="email" name="email" placeholder="Email" required><br><br>
+  <body>
+    <div class="dashboard">
+      <!-- Sidebar -->
 
-    <input type="text" name="department" placeholder="Department" required><br><br>
+      <aside class="sidebar">
+        <div class="logo">
+          <i class="fa-solid fa-cloud"></i>
+          OpsForge
+        </div>
 
-    <button type="submit">Add Employee</button>
+        <ul>
+          <li class="active">
+            <a href="/">
+              <i class="fa-solid fa-users"></i>
+              Employees
+            </a>
+          </li>
 
-</form>
+          <li>
+            <a href="/">
+              <i class="fa-solid fa-chart-line"></i>
+              Dashboard
+            </a>
+          </li>
+        </ul>
+      </aside>
 
-<br>
+      <!-- Main Area -->
 
-<a href="/">Back</a>
+      <main class="main-content">
+        <div class="top-section">
+          <div>
+            <h1>Register Employee</h1>
 
-</body>
+            <p>
+              Register employee details and manage attendance records
+              efficiently
+            </p>
+          </div>
+        </div>
+
+        <div class="table-container form-card">
+          <h2>
+            <i class="fa-solid fa-user-plus"></i>
+            Employee Details
+          </h2>
+
+          <form method="POST" class="employee-form">
+            <div class="input-group">
+              <i class="fa-solid fa-user"></i>
+
+              <input type="text" name="name" placeholder="Full Name" required />
+            </div>
+
+            <div class="input-group">
+              <i class="fa-solid fa-envelope"></i>
+
+              <input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                required
+              />
+            </div>
+
+            <div class="input-group">
+              <i class="fa-solid fa-building"></i>
+
+              <input
+                type="text"
+                name="department"
+                placeholder="Department"
+                required
+              />
+            </div>
+
+            <button type="submit" class="add-btn submit-btn">
+              <i class="fa-solid fa-check"></i>
+
+              Register Employee
+            </button>
+          </form>
+
+          <br />
+
+          <a href="/" class="back-btn">
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Back to Employees
+          </a>
+        </div>
+      </main>
+    </div>
+  </body>
 </html>
